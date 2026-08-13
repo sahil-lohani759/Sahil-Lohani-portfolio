@@ -218,7 +218,7 @@ function makeIDCardTexture(company, role, dates, color, w = 420, h = 580) {
   canvas.width = w; canvas.height = h;
   const ctx = canvas.getContext("2d");
 
-  ctx.fillStyle = "#15161f";
+  ctx.fillStyle = "#292b38";
   ctx.fillRect(0, 0, w, h);
   ctx.strokeStyle = color; ctx.lineWidth = 6;
   ctx.strokeRect(3, 3, w - 6, h - 6);
@@ -1032,7 +1032,9 @@ function StorefrontSection() {
       pivot.add(cardGroup);
 
       const cardTex = makeIDCardTexture(exp.company, exp.role, exp.dates, exp.color);
-      const cardMat = new THREE.MeshStandardMaterial({ map: cardTex, roughness: 0.45, metalness: 0.1 });
+     const cardMat = new THREE.MeshBasicMaterial({
+  map: cardTex
+});
       const cardGeo = new THREE.BoxGeometry(1.45, 2.0, 0.05);
       const card = new THREE.Mesh(cardGeo, cardMat);
       cardGroup.add(card);
